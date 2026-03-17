@@ -5,19 +5,19 @@ const banners = [
     {
         title: "Atomic Habits",
         about: "Transform your life with small habits",
-        image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353",
+        image: "https://res.cloudinary.com/dmul3ttae/image/upload/v1773779563/3-fotor-202603182153_tdbuxh.jpg",
         link: "/book/atomic-habits"
     },
     {
         title: "The Alchemist",
         about: "A journey of dreams and destiny",
-        image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f",
+        image: "https://res.cloudinary.com/dmul3ttae/image/upload/v1773779428/photo-1524995997946-a1c2e315a42f-fotor-2026031815743_rcvpes.jpg",
         link: "/book/the-alchemist"
     },
     {
         title: "Sapiens",
         about: "A brief history of humankind",
-        image: "https://images.unsplash.com/photo-1532012197267-da84d127e765",
+        image: "https://res.cloudinary.com/dmul3ttae/image/upload/v1773779160/photo-1516979187457-637abb4f9353-fotor-2026031815410_hfli02.jpg",
         link: "/book/sapiens"
     }
 ];
@@ -35,7 +35,7 @@ export default function TopBooksBanner() {
     }, []);
 
     return (
-        <div className="w-full h-[450px] relative overflow-hidden rounded-2xl mx-auto max-w-7xl">
+        <div className="w-full h-[400px] relative overflow-hidden rounded-2xl mx-auto max-w-7xl">
 
             {/* Slides */}
             <div

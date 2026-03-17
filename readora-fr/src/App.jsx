@@ -11,37 +11,34 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import BookDetails from "./pages/BookDetails";
 import ParticlesBackground from "./components/animate-ui/backgrounds/particles";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="relative min-h-screen overflow-hidden">
-        {/* Global background */}
+      <div className="relative min-h-screen flex flex-col overflow-hidden">
+
         <ParticlesBackground className="fixed inset-0 z-[-1] pointer-events-none" />
 
-
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blog/:id" element={<BlogDetails />} />
 
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/book/:id" element={<BookDetails />} />
 
-          {/* <Route path="/myblog" element={
-            <RequireAuth>
-              <MyBlogs />
-            </RequireAuth>
-          } /> */}
+            <Route path="/find" element={<FindBooks />} />
+            <Route path="/login" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
 
-          <Route path="/find" element={<FindBooks />} />
-          <Route path="/login" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </main>
 
-
-          <Route path="*" element={<Home />} />
-        </Routes>
         <Footer />
+
       </div>
     </BrowserRouter>
   );

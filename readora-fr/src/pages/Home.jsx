@@ -8,16 +8,10 @@ import TopBooksBanner from "@/components/TopBooksBanner";
 
 export default function Home() {
     return (
-        <div className="min-h-screen flex flex-col justify-center pt-[150px] max-w-full">
-            {/* <div className="overflow-hidden max-h-[700px] min-w-full">
-                <img
-                    src="/hello.png"
-                    alt="Hello"
-                    className="w-full object-cover"
-                />
-            </div> */}
+        <div className="min-h-screen flex flex-col justify-center pt-[130px] max-w-full">
 
-            <div>
+
+            <div className="px-3">
                 <TopBooksBanner />
             </div>
 

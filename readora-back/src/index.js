@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDB from './config/db.js';
 
 import authRoutes from './routes/authRoutes.js'
+import bookRoutes from './routes/bookRoutes.js';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/", authRoutes);
+app.use("/api/books", bookRoutes);
 
 connectDB();
 

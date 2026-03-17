@@ -1,32 +1,42 @@
+import { useEffect, useState } from "react";
 import Card08 from "@/components/ui/card/card08";
-import { categories } from "@/data/mockbooks";
 
 export default function CategoriesSection() {
 
+    const [categories, setCategories] = useState({});
+
+    useEffect(() => {
+
+        fetch("http://localhost:5000/api/books/grouped")
+            .then(res => res.json())
+            .then(data => setCategories(data));
+
+    }, []);
+
     return (
-        <div className="space-y-16 px-6">
+        <div className="space-y-11 px-6">
 
-            {categories.map((category) => (
+            {Object.keys(categories).map((category) => (
 
-                <div key={category.name}>
+                <div key={category}>
 
                     {/* Category Title */}
-                    <h2 className="text-3xl font-bold mb-6 text-black ml-5">
-                        {category.name}
+                    <h2 className="text-4xl font-bold mb-6 ml-4 text-black">
+                        {category}
                     </h2>
 
                     {/* Books Row */}
-                    <div className="flex flex-wrap gap-x-10 overflow-x-auto pb-2 justify-center">
+                    <div className="flex gap-9 flex-wrap justify-center overflow-x-auto pb-1">
 
-                        {category.books.map((book, index) => (
+                        {categories[category].map((book) => (
 
                             <Card08
-                                key={index}
+                                key={book._id}
                                 title={book.title}
                                 subtitle={book.author}
                                 image={book.coverImage}
-                                badge={{ text: category.name }}
-                                href={`/book/${book.title}`}
+                                badge={{ text: category }}
+                                href={`/book/${book._id}`}
                             />
 
                         ))}
