@@ -1,0 +1,44 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency folders
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+dist-ssr/
+**/dist/
+**/build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS & IDE files
+.DS_Store
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# VSCode
+.vscode/
+!.vscode/extensions.json
+
+# Ignore nested frontend/backend folders
+raahi-fr/node_modules/
+raahi-fr/dist/
+raahi-fr/.env
+raahi-back/node_modules/
+raahi-back/dist/
+raahi-back/.env
