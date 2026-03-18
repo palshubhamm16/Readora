@@ -14,7 +14,7 @@ export default function BookDetails() {
         fetch(`${API_BASE_URL}/books/${id}`)
             .then(res => res.json())
             .then(data => setBook(data));
-    }, [id]);
+    }, [API_BASE_URL, id]);
 
     if (!book) return <p className="text-center mt-20">Loading...</p>;
 
