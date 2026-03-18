@@ -5,6 +5,9 @@ import connectDB from './config/db.js';
 
 import authRoutes from './routes/authRoutes.js'
 import bookRoutes from './routes/bookRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
+import addressRoutes from './routes/addressRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 dotenv.config();
 
@@ -15,8 +18,12 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use("/", authRoutes);
 app.use("/api/books", bookRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/address", addressRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/address", addressRoutes);
+app.use("/api/orders", orderRoutes);
 
 connectDB();
 

@@ -4,14 +4,14 @@ import RequireAuth from "./util/RequireAuth";
 
 import Home from "./pages/Home";
 import FindBooks from "./pages/FindBooks";
-
-import BlogDetails from "./pages/BlogDetails";
 import About from "./pages/About";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import BookDetails from "./pages/BookDetails";
+import Cart from "./pages/Cart";
+import Orders from "./pages/Orders";
 import ParticlesBackground from "./components/animate-ui/backgrounds/particles";
 
 function App() {
@@ -28,7 +28,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/book/:id" element={<BookDetails />} />
-
+            <Route path="/cart" element={<RequireAuth><Cart /></RequireAuth>} />
+            <Route path="/orders" element={<RequireAuth><Orders /></RequireAuth>} />
             <Route path="/find" element={<FindBooks />} />
             <Route path="/login" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />

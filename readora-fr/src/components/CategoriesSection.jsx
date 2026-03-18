@@ -3,11 +3,14 @@ import Card08 from "@/components/ui/card/card08";
 
 export default function CategoriesSection() {
 
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
+
+
     const [categories, setCategories] = useState({});
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/api/books/grouped")
+        fetch(`${API_BASE_URL}/books/grouped`)
             .then(res => res.json())
             .then(data => setCategories(data));
 

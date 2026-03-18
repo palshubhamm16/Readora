@@ -4,25 +4,45 @@ import toast from "react-hot-toast";
 
 export default function BookDetails() {
 
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
+
+
     const { id } = useParams();
     const [book, setBook] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/books/${id}`)
+        fetch(`${API_BASE_URL}/books/${id}`)
             .then(res => res.json())
             .then(data => setBook(data));
     }, [id]);
 
     if (!book) return <p className="text-center mt-20">Loading...</p>;
 
-    const addToCart = () => {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const addToCart = async () => {
 
-        cart.push(book);
+        try {
+            const token = localStorage.getItem("token");
 
-        localStorage.setItem("cart", JSON.stringify(cart));
+            const res = await fetch(`${API_BASE_URL}/cart/add`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({ bookId: book._id })
+            });
 
-        toast.success("Added to cart");
+            const data = await res.json();
+
+            if (res.ok) {
+                toast.success("Added to cart");
+            } else {
+                toast.error(data.message);
+            }
+
+        } catch {
+            toast.error("Error adding to cart");
+        }
     };
 
     return (
