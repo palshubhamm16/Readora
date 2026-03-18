@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-export default function SearchBar({ onSearch }) {
+export default function SearchBar({ onSearchResults }) {
 
     const [query, setQuery] = useState("");
     const [category, setCategory] = useState("");
+    const [hasSearched, setHasSearched] = useState(false);
 
     const categories = [
         "Fiction",
@@ -14,17 +15,40 @@ export default function SearchBar({ onSearch }) {
         "History"
     ];
 
-    const handleSubmit = (e) => {
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        onSearch({
-            query,
-            category
-        });
+        try {
+            const params = new URLSearchParams();
+
+            if (query) params.append("query", query);
+            if (category) params.append("category", category);
+
+            const res = await fetch(
+                `${API_BASE_URL}/books/search?${params.toString()}`
+            );
+
+            const data = await res.json();
+
+            onSearchResults(data);
+            setHasSearched(true);
+
+        } catch {
+            console.error("Search failed");
+        }
     };
 
     const clearCategory = () => {
         setCategory("");
+    };
+
+    const clearSearch = () => {
+        setQuery("");
+        setCategory("");
+        setHasSearched(false);
+        onSearchResults([]); // clear results
     };
 
     return (
@@ -62,12 +86,11 @@ export default function SearchBar({ onSearch }) {
                                 {cat}
                             </option>
                         ))}
-
                     </select>
                 </div>
 
                 {/* Buttons */}
-                <div className="flex gap-3 mt-6">
+                <div className="flex gap-3 mt-6 flex-wrap">
 
                     <button
                         type="submit"
@@ -83,6 +106,16 @@ export default function SearchBar({ onSearch }) {
                             className="bg-gray-300 hover:bg-gray-400 text-black px-4 py-2 rounded shadow transition"
                         >
                             Clear Category
+                        </button>
+                    )}
+
+                    {hasSearched && (
+                        <button
+                            type="button"
+                            onClick={clearSearch}
+                            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow transition"
+                        >
+                            Clear Search
                         </button>
                     )}
 

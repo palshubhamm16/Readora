@@ -32,6 +32,35 @@ router.get("/grouped", async (req, res) => {
 
 
 
+router.get("/search", async (req, res) => {
+    try {
+        const { query, category } = req.query;
+
+        let filter = {};
+
+        if (query) {
+            filter.$or = [
+                { title: { $regex: query, $options: "i" } },
+                { author: { $regex: query, $options: "i" } }
+            ];
+        }
+
+        if (category) {
+            filter.category = category;
+        }
+
+        const books = await Book.find(filter);
+
+        res.json(books);
+
+    } catch {
+        res.status(500).json({ message: "Search error" });
+    }
+});
+
+
+
+
 
 
 router.get("/:id", async (req, res) => {

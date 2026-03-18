@@ -53,7 +53,7 @@ export default function BookDetails() {
                 <img
                     src={book.coverImage}
                     alt={book.title}
-                    className="w-full h-[450px] object-cover rounded-lg shadow"
+                    className="w-full h-[450px] object-fit rounded-lg shadow"
                 />
             </div>
 

@@ -2,53 +2,61 @@ import { useState } from "react";
 
 import SearchBar from "@/components/SearchBar";
 import CardGrid from "@/components/ui/CardGrid";
-import MultiCard from "@/components/ui/card/card01";
 import TopBooksCarousel from "@/components/TopBooksCarousel";
 
-
 export default function FindBooks() {
-    const [blogs, setBlogs] = useState([]);
-    const [searched, setSearched] = useState(false); // Track if search was attempted
 
-    const handleSearchResults = (results) => {  // This Function runs when prop value is returned from child component
-        setBlogs(results);
+    const [books, setBooks] = useState([]);
+    const [searched, setSearched] = useState(false);
+
+    const handleSearchResults = (results) => {
+        setBooks(results);
         setSearched(true);
     };
 
-    const cards = blogs.map((blog) => ({
-        image: blog.image,
-        title: blog.title,
-        subtitle: blog.subtitle,
-        description: blog.description,
-        link: `/blog/${blog._id}`,
+    const cards = books.map((book) => ({
+        image: book.coverImage,
+        title: book.title,
+        subtitle: book.author,
+        description: book.about,
+        href: `/book/${book._id}`,
     }));
 
     return (
         <div className="min-h-screen flex flex-col pt-[120px]">
+
             <div className="mb-6 flex flex-col items-center">
-                <h1 className="mb-6 mt-4 tracking-tighter text-4xl font-bold text-zinc-900 dark:text-zinc-100 sm:text-6xl">
+                <h1 className="mb-6 mt-4 text-4xl font-bold">
                     Find Books
                 </h1>
+
                 <SearchBar onSearchResults={handleSearchResults} />
             </div>
 
             <div className="px-4 sm:px-8 lg:px-20 flex justify-center">
+
                 {!searched ? (
-                    <p className="text-gray-600 text-lg text-center mt-10 items-center">
+                    <p className="text-gray-600 text-lg mt-10">
                         Your search results will show up here.
                     </p>
-                ) : blogs.length === 0 ? (
-                    <p className="text-red-500 text-lg text-center mt-10">
+
+                ) : books.length === 0 ? (
+                    <p className="text-red-500 text-lg mt-10">
                         No results found.
                     </p>
+
                 ) : (
-                    <MultiCard cards={cards} />
+                    <CardGrid
+                        items={cards}
+                        title="Search Results"
+                        subtitle="Books matching your search"
+                    />
                 )}
+
             </div>
 
-            <div>
-                <TopBooksCarousel />
-            </div>
+            <TopBooksCarousel />
+
         </div>
     );
 }

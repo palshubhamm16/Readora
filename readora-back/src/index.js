@@ -22,8 +22,7 @@ app.use("/api/books", bookRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/address", addressRoutes);
 app.use("/api/orders", orderRoutes);
-app.use("/api/address", addressRoutes);
-app.use("/api/orders", orderRoutes);
+
 
 connectDB();
 
