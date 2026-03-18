@@ -56,7 +56,7 @@ export default function TopBooksBanner() {
                         />
 
                         {/* Overlay */}
-                        <div className="absolute inset-0 bg-black/50" />
+                        <div className="absolute inset-0 bg-black/40" />
 
                         {/* Content */}
                         <div className="absolute inset-0 flex flex-col justify-center items-start px-10 text-white">
