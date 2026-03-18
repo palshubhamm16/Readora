@@ -6,19 +6,19 @@ const banners = [
         title: "Atomic Habits",
         about: "Transform your life with small habits",
         image: "https://res.cloudinary.com/dmul3ttae/image/upload/v1773779563/3-fotor-202603182153_tdbuxh.jpg",
-        link: "/book/atomic-habits"
+        link: "/book/69b9ace3b89bed30fa4bf535"
     },
     {
         title: "The Alchemist",
         about: "A journey of dreams and destiny",
         image: "https://res.cloudinary.com/dmul3ttae/image/upload/v1773779428/photo-1524995997946-a1c2e315a42f-fotor-2026031815743_rcvpes.jpg",
-        link: "/book/the-alchemist"
+        link: "/book/69b9ace3b89bed30fa4bf532"
     },
     {
         title: "Sapiens",
         about: "A brief history of humankind",
         image: "https://res.cloudinary.com/dmul3ttae/image/upload/v1773779160/photo-1516979187457-637abb4f9353-fotor-2026031815410_hfli02.jpg",
-        link: "/book/sapiens"
+        link: "/book/69b9ace3b89bed30fa4bf549"
     }
 ];
 
