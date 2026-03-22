@@ -4,6 +4,9 @@ import toast from "react-hot-toast";
 
 export default function SignUp() {
 
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
+
+
     const navigate = useNavigate();
 
     const [name, setName] = useState("");
@@ -15,7 +18,7 @@ export default function SignUp() {
 
         try {
 
-            const res = await fetch("http://localhost:5000/api/auth/signup", {
+            const res = await fetch(`${API_BASE_URL}/auth/signup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
